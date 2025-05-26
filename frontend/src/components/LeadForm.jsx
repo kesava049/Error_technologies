@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
+import './LeadForm.css'; // Add this line
 
 function LeadForm() {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
@@ -11,11 +11,13 @@ function LeadForm() {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setError('');
+    setSuccess('');
     if (!form.name || !form.email || !/^\S+@\S+\.\S+$/.test(form.email)) {
       return setError('Please enter a valid name and email.');
     }
     try {
-      await axios.post('https://your-backend-url.com/api/lead', form);
+      await axios.post('https://kesavulareddy.app.n8n.cloud/webhook/lead-webhook', form);
       setSuccess('Lead submitted successfully!');
       setForm({ name: '', email: '', company: '', message: '' });
     } catch {
@@ -24,7 +26,7 @@ function LeadForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
       <input name="name" value={form.name} onChange={handleChange} placeholder="Name" required />
       <input name="email" value={form.email} onChange={handleChange} placeholder="Email" required />
       <input name="company" value={form.company} onChange={handleChange} placeholder="Company" />
@@ -36,4 +38,4 @@ function LeadForm() {
   );
 }
 
-export default LeadForm;
+export default LeadForm;    

@@ -1,9 +1,8 @@
-
+import React from 'react'
 import './App.css'
 import LeadForm from './components/LeadForm'
 
 function App() {
-
 
   return (
     <>

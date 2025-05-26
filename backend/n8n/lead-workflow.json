@@ -1,0 +1,60 @@
+{
+    "nodes": [
+      {
+        "parameters": {
+          "path": "lead-webhook",
+          "method": "POST",
+          "responseMode": "onReceived",
+          "responseData": {
+            "responseBody": "Lead received successfully!"
+          }
+        },
+        "id": "webhook-node",
+        "name": "Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ]
+      },
+      {
+        "parameters": {
+          "fromEmail": "kalepallikesavulareddy@gmail.com",
+          "toEmail": "kalepallikarthik07@gmail.com",
+          "subject": "New Lead Submission",
+          "text": "New Lead:\nName: {{$json.name}}\nEmail: {{$json.email}}\nCompany: {{$json.company}}\nMessage: {{$json.message}}"
+        },
+        "id": "email-node",
+        "name": "Send Email",
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2,
+        "position": [
+          300,
+          0
+        ],
+        "credentials": {
+          "smtp": {
+            "id": "r2Hpmg8axIHGvo26",
+            "name": "SMTP account 2"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Send Email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "active": true,
+    "settings": {},
+    "name": "Lead Capture Workflow"
+  }
