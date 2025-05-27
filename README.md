@@ -125,9 +125,11 @@ Google Cloud Account (optional, for Google Sheets integration)
 
 # Deployment
 
-Frontend: Vercel-Link = error-technologies-fj7q-8ajij66ut-kesavula-reddys-projects.vercel.app
-Backend: Render-Link = https://error-technologies-assignment.onrender.com
-n8nFile: provided in the /backend/n8n.json
+# Frontend: Vercel-Link
+error-technologies-fj7q-8ajij66ut-kesavula-reddys-projects.vercel.app
+# Backend: Render-Link 
+https://error-technologies-assignment.onrender.com:
+# n8nFile: provided in the /backend/n8n.json
 
 
 
