@@ -1,0 +1,199 @@
+{
+  "name": "Sending Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1U-NS2AIRa_dQPwNnjnaqr54NZru9BDdptIlqyJ_4Ckc",
+          "mode": "list",
+          "cachedResultName": "Project Data Collection Update",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1U-NS2AIRa_dQPwNnjnaqr54NZru9BDdptIlqyJ_4Ckc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1U-NS2AIRa_dQPwNnjnaqr54NZru9BDdptIlqyJ_4Ckc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Team ID",
+              "displayName": "Team ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Internship IDs ( Mention all Teammate IDs )",
+              "displayName": "Internship IDs ( Mention all Teammate IDs )",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Team Size",
+              "displayName": "Team Size",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Team Name",
+              "displayName": "Team Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Student Names",
+              "displayName": "Student Names",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data Source",
+              "displayName": "Data Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Student Collected Data Source (If not collected type NA)",
+              "displayName": "Student Collected Data Source (If not collected type NA)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        340,
+        -40
+      ],
+      "id": "7d596b03-2887-4d65-a962-0122642151b3",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EANfgF3lOXZ03Cak",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "kalepallikesavulareddy@gmail.com",
+        "toEmail": "kalepallikarthik07@gmail.com",
+        "subject": "Details",
+        "emailFormat": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        -60
+      ],
+      "id": "4a9fb7a3-8fd4-4e79-8f1a-1adc718409c5",
+      "name": "Send Email",
+      "webhookId": "aae24ac6-93e1-452b-be60-f301e320bae4",
+      "credentials": {
+        "smtp": {
+          "id": "YitJ2hIz2FCPOiYR",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        -220
+      ],
+      "id": "b82a7750-42da-4a77-ad59-dfd7abd334ec",
+      "name": "Webhook",
+      "webhookId": "fdd35f20-56c7-4525-a8ac-01edd4397e75"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets": {
+      "main": [
+        []
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0cb16fd3-3cc9-4769-8719-452c334ca132",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "19bb0dcdff81a1f1809b895453c706fe4c251569b092a30b11d42465a56e72a2"
+  },
+  "id": "PIe1gx5CtVOH6S0Y",
+  "tags": [
+    {
+      "createdAt": "2025-05-26T18:12:04.437Z",
+      "updatedAt": "2025-05-26T18:12:04.437Z",
+      "id": "BURzPvAVoPAwjIcQ",
+      "name": "error-assignment"
+    }
+  ]
+}

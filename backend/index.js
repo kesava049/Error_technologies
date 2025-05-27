@@ -18,9 +18,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/lead', async (req, res) => {
   const { name, email, company, message } = req.body;
-//   if (!name || !email || !/^\S+@\S+\.\S+$/.test(email)) {
-//     return res.status(400).json({ error: 'Invalid name or email' });
-//   }
+
     // Input Validation Using Zod Library
    const response = validateInput({ name, email, company, message });
    if (!response.success) {
