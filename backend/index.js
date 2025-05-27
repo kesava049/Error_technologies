@@ -1,10 +1,11 @@
 // server.js
+
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const { validateInput } = require('./InputValidation/zod');
 const app = express();
-
+process.env.PORT = 4000;
 app.use(cors());
 app.use(express.json());
 
@@ -14,13 +15,13 @@ app.post('/api/lead', async (req, res) => {
 //     return res.status(400).json({ error: 'Invalid name or email' });
 //   }
     // Input Validation Using Zod Library
-   const response = await validateInput({name, email, company, message});
+   const response = validateInput({ name, email, company, message });
    if (!response.success) {
     return res.status(400).json({ error: response.error.message });
    }
 
   try {
-    await axios.post('https://kesavulareddy.app.n8n.cloud/webhook/lead-webhook', {
+    await axios.post(process.env.N8N_WEBHOOK_URL, {
       name, email, company, message
     });
     res.status(200).json({ message: 'Lead sent to automation' });
@@ -29,4 +30,4 @@ app.post('/api/lead', async (req, res) => {
   }
 });
 
-app.listen(4000, () => console.log('Server running on port 4000'));
+app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
