@@ -100,7 +100,7 @@ Google Cloud Account (optional, for Google Sheets integration)
    ```
    Run the development server:
    ```sh
-   node index.js
+   npm run dev
    ```
 
 3. ** frontend Setup**:
