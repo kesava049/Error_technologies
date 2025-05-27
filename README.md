@@ -170,88 +170,32 @@ SendGrid Account (for email notifications)
 
 Google Cloud Account (optional, for Google Sheets integration)
 
+### Installation
 
+1. **Clone the repository**:
 
-Git (for cloning the repository)
+   ```sh
+   git clone https://github.com/kesava049/paytm.git
+   cd paytm
+   ```
 
-1. Clone the Repository
+2. **Install backend dependencies**:
 
-git clone https://github.com/your-username/lead-generation-system.git
-cd lead-generation-system
+   ```sh
+   cd backend
+   npm install
+   ```
 
-2. Frontend Setup
+3. **Install frontend dependencies**:
 
-
-
-
-
-Navigate to the frontend directory:
-
-cd frontend
-
-
-
-Install dependencies:
-
-npm install
-
-
-
-Create a .env file in /frontend with the backend API URL:
-
-VITE_API_URL=https://your-backend-url.com/api/leads
-
-
-
-Run the development server:
-
-npm run dev
-
-
-
-Build for production:
-
-npm run build
-
-3. Backend Setup
+   ```sh
+   cd ../frontend
+   npm install
+   ```
 
 
 
 
 
-Navigate to the backend directory:
-
-cd backend
 
 
-
-Install dependencies:
-
-npm install
-
-
-
-Create a .env file in /backend with the following:
-
-PORT=3000
-N8N_WEBHOOK_URL=https://your-n8n-webhook-url
-
-
-
-Run the backend server:
-
-npm start
-
-
-
-Deploy to Render:
-
-
-
-
-
-Push the /backend directory to a new repository.
-
-
-
-Configure Render to use Node.js (v20) and set environment variables.
