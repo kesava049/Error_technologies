@@ -8,81 +8,35 @@ This project is a robust Lead Generation System designed to efficiently collect 
 
 # Key Features
 
-
-
-
-
  Frontend: A responsive React (Vite) form with Tailwind CSS, Zod for validation, React Hooks, and Axios for API calls.
 
-
-
  Backend: A Node.js (Express) API with CORS support to handle form submissions and forward data to n8n.
-
-
-
+ 
  n8n Workflow: Automates email notifications via SendGrid and optionally stores lead data in Google Sheets.
-
-
 
  Deployment: Frontend on Netlify, backend on Render, n8n workflow on n8n Cloud.
 
-
-
-Documentation: Clear setup instructions and extensibility guidelines.
+# Documentation: Clear setup instructions and extensibility guidelines.
 
 
 # System Components
 
 # 1. Frontend
 
-
-
-
-
 Technologies: React (Vite), Tailwind CSS, Zod, React Hooks, Axios.
-
-
 
 # Functionality:
 
-
-
-
-
 A clean, responsive form collecting name (required), email (required), company (optional), and message (optional).
-
-
-
 Client-side validation using Zod ensures:
-
-
-
-
-
 Name and email are non-empty.
-
-
-
 Email follows a valid format (via Zod's email schema).
-
-
-
 Form submissions are sent to the backend using Axios.
-
-
-
 Built with React Hooks for state management and Tailwind CSS for styling.
-
-
-
 Location: /frontend directory.
 
 
 # 2. Backend
-
-
-
-
 
 Technologies: Node.js (v20), Express, CORS.
 
@@ -90,22 +44,9 @@ Technologies: Node.js (v20), Express, CORS.
 
 # Functionality:
 
-
-
-
-
 Exposes a /api/leads endpoint to accept POST requests with lead data.
-
-
-
 Validates incoming data (ensures name and email are present and email is valid).
-
-
-
 Forwards valid data to the n8n workflow via an HTTP POST request.
-
-
-
 Uses CORS to allow cross-origin requests from the frontend.
 
 
@@ -113,61 +54,26 @@ Uses CORS to allow cross-origin requests from the frontend.
 Location: /backend directory.
 
 # 3. n8n Workflow
-
-
-
-
-
-Technology: n8n (cloud-hosted or local).
+Technology: n8n used -> cloud-hosted.
 
 
 
 # Functionality:
 
-
-
-
-
 Trigger: Webhook triggered by the backend's HTTP POST request.
-
-
-
 Email Notification: Sends lead details to the sales team using SendGrid.
-
-
-
 Optional Storage: Stores lead data in Google Sheets for record-keeping.
-
-
-
 Location: n8n workflow JSON file in /n8n-workflow directory or hosted on n8n Cloud.
-
 
 
 # Setup Instructions
 
 # Prerequisites
 
-
-
-
-
 Node.js (v20 or higher)
-
-
-
 npm (v8 or higher)
-
-
-
 n8n (local or n8n Cloud account)
-
-
-
 SendGrid Account (for email notifications)
-
-
-
 Google Cloud Account (optional, for Google Sheets integration)
 
 ### Installation
@@ -175,8 +81,8 @@ Google Cloud Account (optional, for Google Sheets integration)
 1. **Clone the repository**:
 
    ```sh
-   git clone https://github.com/kesava049/paytm.git
-   cd paytm
+   git clone https://github.com/kesava049/Error_technologies.git
+   cd assignment_error_technologies
    ```
 
 2. **Install backend dependencies**:
@@ -185,13 +91,42 @@ Google Cloud Account (optional, for Google Sheets integration)
    cd backend
    npm install
    ```
-
-3. **Install frontend dependencies**:
+   Create a config.js file in /frontend with the backend API URL:
 
    ```sh
-   cd ../frontend
+   PORT=4000
+   n8nWebhookUrl: process.env.N8N_WEBHOOK_URL ||   
+   'https://kesavulareddy.app.n8n.cloud/webhook/lead-webhook',
+   ```
+   Run the development server:
+   ```sh
+   node index.js
+   ```
+
+3. ** frontend Setup**:
+
+   ```sh
+   cd frontend
    npm install
    ```
+   Create a .env file in /frontend with the backend API URL:
+
+   ```sh
+   VITE_API_URL=https://localhost:4000/api/lead/
+   ```
+   Run the development server:
+   ```sh
+   npm run dev
+   ```
+   Build for production:
+   ```sh
+   npm run build
+   ```
+
+# Deployment
+
+
+
 
 
 
