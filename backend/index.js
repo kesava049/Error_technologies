@@ -9,6 +9,13 @@ process.env.PORT = 4000;
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send({
+    message1: "Hey I'm Kesavula Reddy",
+    message2: "This is my backend server running from Render"
+  });
+});
+
 app.post('/api/lead', async (req, res) => {
   const { name, email, company, message } = req.body;
 //   if (!name || !email || !/^\S+@\S+\.\S+$/.test(email)) {
