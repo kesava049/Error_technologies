@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './LeadForm.css'; // Add this line
+import { renderURL } from '../renderURL';
 
 function LeadForm() {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
@@ -17,7 +18,7 @@ function LeadForm() {
       return setError('Please enter a valid name and email.');
     }
     try {
-      await axios.post('https://kesavulareddy.app.n8n.cloud/webhook/lead-webhook', form);
+      await axios.post(renderURL, form);  // the renderURL is from deployed backend URL...
       setSuccess('Lead submitted successfully!');
       setForm({ name: '', email: '', company: '', message: '' });
     } catch {
